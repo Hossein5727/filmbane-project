@@ -12,7 +12,7 @@ function ServicesSection() {
         <a download href={imgService} className="service-btn">
           download
           <MdLogin className="text-[26px]" />
-        </a>
+        </a> 
       </div>
 
       <div className="flex flex-col justify-start items-start gap-4 w-full">
