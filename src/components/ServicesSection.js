@@ -17,7 +17,7 @@ function ServicesSection() {
 
       <div className="flex flex-col justify-start items-start gap-4 w-full">
         <div className="flex items-center gap-2">
-          <div className="w-[38px] h-[3px] rounded-lg bg-citrine"></div>
+          <div className="w-[38px]  h-[3px] rounded-lg bg-citrine"></div>
           <h4 className="uppercase text-white text-[13px] font-[500]">
             Our Services
           </h4>
