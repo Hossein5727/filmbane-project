@@ -1,38 +1,101 @@
-.App {
-  text-align: center;
+.bgHeroPage{
+    background: url(./assests/img/hero-bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 750px;
+    height: 100vh;
+    max-height: 1000px;
+    color: #fff;
+    padding-top: 85px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 18px;
+    padding-right: 18px;
+    /* background-color: #151923; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.upcomingMovieContainer{
+    background: url(./assests/img/upcoming-bg.png) no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.has-scrollbar{
+    scroll-snap-type: inline mandatory;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-radius: 10px;
+}
+
+
+.has-scrollbar::-webkit-scrollbar { 
+    height: 13px;
+    padding: 2px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    z-index: 3;
+}
+
+.has-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+  border: 2px solid hsl(57, 97%, 45%);
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(0, 7%, 88%);
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 black,
+              inset 0 -1px 0 black;
+
+}
+
+.containerImgMovie{
+    position: relative;
+    transition: all 0.4s ;
+    aspect-ratio: 2 / 3;
+}
+
+.containerImgMovie::after{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    /* background-color: rgba(0, 0, 0, 0.1 ); */
+    z-index: 2;
+    transition: all 0.4s ;
+}
+
+.containerImgMovie:hover { box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.5); }
+
+.containerImgMovie:hover::after { background: hsla(0, 0%, 100%, 0.05); }
+
+/* / */
+
+.servicesSectionBg{
+    background: url(./assests/img/service-bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.service-btn {
+    position: absolute;
+    bottom: 0;
+    right: 86px;
+    background: hsl(57, 97%, 45%);
+    color: hsl(225, 25%, 9%);
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transform: rotate(0.25turn);
+    transform-origin: bottom right;
+    padding: 28px 35px;
+    border-radius: 6px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
