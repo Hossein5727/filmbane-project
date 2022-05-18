@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import { IoTimeOutline } from "react-icons/io5";
 import { AiFillStar } from "react-icons/ai";
 
-function UpcomingMiveData({ item }) {
+function RelatedMovie({ item }) {
   return (
-    <Link className="w-full  mb-6" key={item.id} to={`/movieData/${item.id}`}>
-      <div className=" min-h-full w-full snap-start flex flex-col justify-between gap-5">
-        <div className="w-[90vw] md:w-auto flex justify-center items-center h-full rounded-lg overflow-hidden containerImgMovie cursor-pointer">
+    <Link
+      className="w-full mb-6 md:w-[300px]"
+      key={item.id}
+      to={`/movieData/${item.id}`}
+    >
+      <div className=" min-h-full w-full snap-start flex flex-col justify-between gap-3">
+        <div className="w-[90vw] md:w-auto  flex justify-center items-center h-full rounded-lg overflow-hidden containerImgMovie cursor-pointer">
           <img
             src={item.img}
             alt={item.title}
@@ -15,7 +19,7 @@ function UpcomingMiveData({ item }) {
           />
         </div>
 
-        <div className="w-full h-[93px] flex flex-col justify-between items-start gap-5">
+        <div className="w-full h-[66px] flex flex-col justify-between items-start">
           <div className="flex w-full justify-between items-start">
             <h3 className="text-[16px] font-[700] max-w-[80%] whitespace-pre-wrap text-white transition-all duration-150 hover:text-citrine">
               {item.title}
@@ -49,4 +53,4 @@ function UpcomingMiveData({ item }) {
   );
 }
 
-export default UpcomingMiveData;
+export default RelatedMovie;

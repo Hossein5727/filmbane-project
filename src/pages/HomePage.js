@@ -1,5 +1,10 @@
 import React from "react";
-import { Hero, ServicesSection, UpcomingMoives } from "../components";
+import {
+  Hero,
+  RelatedMovies,
+  ServicesSection,
+  UpcomingMoives,
+} from "../components";
 
 function HomePage() {
   return (
@@ -7,6 +12,7 @@ function HomePage() {
       <Hero />
       <UpcomingMoives />
       <ServicesSection />
+      <RelatedMovies />
     </div>
   );
 }
