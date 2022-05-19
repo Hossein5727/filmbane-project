@@ -1,3 +1,12 @@
+::selection{
+    background-color: hsl(229, 15%, 21%);
+    color: hsl(57, 97%, 45%);
+    padding: 6px 12px;
+}
+
+/* / */
+
+
 .bgHeroPage{
     background: url(./assests/img/hero-bg.jpg) no-repeat;
     background-size: cover;
@@ -134,4 +143,12 @@
 
 .filterBtn:focus::before{
     right: 0;
+}
+
+/* / */
+
+.bgBestSeries{
+    background: url(./assests/img/tv-series-bg.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
 }

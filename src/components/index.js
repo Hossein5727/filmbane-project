@@ -5,3 +5,5 @@ export { default as ServicesSection } from "./ServicesSection";
 export { default as ServiceCard } from "./ServiceCard";
 export { default as RelatedMovies } from "./RelatedMovies";
 export { default as RelatedMovie } from "./RelatedMovie";
+export { default as BestSeries } from "./BestSeries";
+export { default as Serial } from "./Serial";

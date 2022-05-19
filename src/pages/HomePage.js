@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  BestSeries,
   Hero,
   RelatedMovies,
   ServicesSection,
@@ -8,11 +9,12 @@ import {
 
 function HomePage() {
   return (
-    <div className="">
+    <div className="homePage">
       <Hero />
       <UpcomingMoives />
       <ServicesSection />
       <RelatedMovies />
+      <BestSeries />
     </div>
   );
 }
