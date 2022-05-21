@@ -1,6 +1,7 @@
 import React from "react";
 import {
   BestSeries,
+  Cta,
   Hero,
   RelatedMovies,
   ServicesSection,
@@ -15,6 +16,7 @@ function HomePage() {
       <ServicesSection />
       <RelatedMovies />
       <BestSeries />
+      <Cta />
     </div>
   );
 }

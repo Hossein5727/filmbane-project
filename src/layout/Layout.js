@@ -1,11 +1,12 @@
 import React from "react";
-import { Header } from "../components";
+import { Footer, Header } from "../components";
 
 function Layout({ children }) {
   return (
     <div>
       <Header />
       {children}
+      <Footer />
     </div>
   );
 }
