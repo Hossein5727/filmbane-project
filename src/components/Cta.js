@@ -19,7 +19,7 @@ function Cta() {
       <div className="w-full">
         <form
           onSubmit={submitHandler}
-          className="w-full flex flex-col items-center text-center gap-3"
+          className="w-full flex flex-col items-center text-center gap-4"
         >
           <input
             type="text"

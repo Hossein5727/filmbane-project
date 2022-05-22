@@ -174,4 +174,8 @@
     height: 4px;
     border-top: 1px solid  hsl(225, 25%, 9%);
     border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
-  }
+}
+
+.bgFooterSection2{
+    background: #171D21;
+}
