@@ -55,7 +55,7 @@ function Footer() {
           Rights Reserved
         </p>
 
-        <img src={socialInons} alt="socialInons" className="w-[90%]" />
+        <img src={socialInons} alt="socialInons" className="w-[90%] md:w-auto" />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 export const navData = [
-  { id: 1, text: "Home", link: "/" },
-  { id: 2, text: "Movie", link: "#" },
-  { id: 3, text: "Tv Show", link: "#" },
-  { id: 4, text: "Web Series", link: "#" },
-  { id: 5, text: "Pricing", link: "#" },
+  { id: 1, text: "Home", link: "#top" },
+  { id: 2, text: "Movie", link: "#upcominmovie" },
+  { id: 3, text: "Tv Show", link: "#movie" },
+  { id: 4, text: "Web Series", link: "#series" },
+  { id: 5, text: "Pricing", link: "#cta" },
 ];

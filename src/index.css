@@ -14,6 +14,9 @@ body,html{
   overflow-x: hidden;
 }
 
-body::-webkit-scrollbar{
-  display: none;
+/* html::-webkit-scrollbar{
+  display: block;
 }
+html::-webkit-scrollbar-thumb{
+  background-color: #ccc;
+} */

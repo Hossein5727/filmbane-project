@@ -4,7 +4,7 @@ function ServiceCard({ item }) {
   return (
     <div
       key={item.id}
-      className={`w-full flex flex-col gap-4 pb-4 ${
+      className={`w-full flex flex-col gap-4 pb-4  ${
         item.id == 1 && "border-b border-dashed border-b-[#BDBDBD]"
       } `}
     >

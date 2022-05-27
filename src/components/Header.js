@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { FaTimes } from "react-icons/fa";
 import { BsYoutube, BsInstagram, BsTwitter, BsFacebook } from "react-icons/bs";
+import { BiSearch, BiWorld } from "react-icons/bi";
 import { navData } from "../data/navData";
 import logo from "../assests/img/logo.svg";
 
@@ -11,8 +12,10 @@ function Header() {
   const navRef = useRef();
   const navContainerRef = useRef();
   const headerRef = useRef();
+  const location = useLocation();
 
   useEffect(() => {
+    console.log(headerRef);
     // toggle navbar and has transition!!
     if (isToggleMenu) {
       navRef.current.classList.add("animate__fadeInRight", "right-0");
@@ -35,28 +38,90 @@ function Header() {
     return () => {
       clearTimeout(navContainerRef);
     };
-  }, [navRef, isToggleMenu, headerRef]);
+  }, [navRef, isToggleMenu, location]);
 
   const headerScrollChangeBg = () => {
     window.addEventListener("scroll", () => {
-      window.scrollY >= 10
-        ? headerRef.current.classList.add("bg-[#151923]") ||
-          headerRef.current.classList.remove("bg-transparent")
-        : headerRef.current.classList.remove("bg-[#151923]");
+      if (
+        headerRef.current.baseURI === "http://localhost:3000/" ||
+        headerRef.current.baseURI.startsWith("http://localhost:3000/#")
+      ) {
+        window.pageYOffset >= 10
+          ? headerRef.current.classList.add("bg-[#151923]") ||
+            headerRef.current.classList.remove("bg-transparent")
+          : headerRef.current.classList.add("bg-transparent") ||
+            headerRef.current.classList.remove("bg-[#151923]");
+      }
     });
   };
 
   return (
     <header
       ref={headerRef}
-      className="w-full fixed top-0 left-0 bg-transparent  px-4 py-5 z-[8] transition-all duration-500"
+      className={`w-full fixed top-0 left-0  ${
+        location.pathname === "/" ? "bg-transparent" : "bg-[#151923]"
+      }   px-4 lg:px-8 py-5 lg:py-9 z-[8] transition-all duration-500`}
     >
       <div className="w-full flex items-center justify-between">
-        <img src={logo} alt="logo" />
-        <HiMenuAlt4
-          className="text-4xl cursor-pointer transition-all duration-150 text-white"
-          onClick={() => setIsToggleMenu(!isToggleMenu)}
-        />
+        <Link to="/">
+          <img src={logo} alt="logo" />
+        </Link>
+        <div className="hidden lg:flex md:justify-center md:items-center md:text-white lg:text-base lg:font-bold md:gap-9">
+          {navData.map((item) => (
+            <a
+              key={item.id}
+              href={item.link}
+              className={`font-[500] transition-all duration-150  focus:text-citrine active:text-citrine focus-visible:text-citrine`}
+            >
+              {item.text}
+            </a>
+          ))}
+        </div>
+        <div className="flex items-center gap-5">
+          <div className="hidden md:flex md:justify-center md:items-center md:gap-5 md:text-white">
+            <BiSearch className="text-[23px] font-bold border-r border-light-gray pr-2 w-10 h-5" />
+            <div className="flex gap-1 items-center">
+              <BiWorld className="text-[23px] font-bold text-citrine" />
+              <select id="cars" className="bg-transparent text-white font-bold">
+                <option
+                  value="volvo"
+                  className="text-rich-black-fogra-39 text-sm uppercase"
+                >
+                  en
+                </option>
+                <option
+                  value="saab"
+                  className="text-rich-black-fogra-39 text-sm uppercase"
+                >
+                  au
+                </option>
+                <option
+                  value="opel"
+                  className="text-rich-black-fogra-39 text-sm uppercase"
+                >
+                  ar
+                </option>
+                <option
+                  value="audi"
+                  className="text-rich-black-fogra-39 text-sm uppercase"
+                >
+                  fa
+                </option>
+              </select>
+            </div>
+          </div>
+          <Link
+            to="/signup"
+            className="hidden xl:uppercase xl:flex xl:justify-center xl:items-center xl:w-32 xl:h-11 xl:bg-rich-black-fogra-29 border-2 border-citrine xl:rounded-3xl xl:text-white xl:font-bold xl:text-sm xl:tracking-wider xl:transition-all xl:duration-150 xl:hover:bg-citrine xl:hover:text-rich-black-fogra-39 xl:focus:bg-citrine xl:focus:text-rich-black-fogra-39  "
+            style={{ wordSpacing: "3px" }}
+          >
+            sign in
+          </Link>
+          <HiMenuAlt4
+            className="text-4xl cursor-pointer transition-all duration-150 text-white lg:hidden"
+            onClick={() => setIsToggleMenu(!isToggleMenu)}
+          />
+        </div>
       </div>
       <div
         ref={navContainerRef}
@@ -77,16 +142,16 @@ function Header() {
           </div>
           <div className="flex w-full flex-col justify-start gap-2 text-white text-[15px]">
             {navData.map((item) => (
-              <Link
+              <a
                 key={item.id}
-                to={item.link}
+                href={item.link}
                 className={`font-[500] border-b px-6 py-[7px] ${
                   item.text === "Home" &&
                   "border-t py-[11px] border-t-[#2F3438]"
-                } border-b-[#2F3438] transition-all duration-150  focus:text-citrine`}
+                } border-b-[#2F3438] transition-all duration-150  active:text-citrine focus:text-citrine`}
               >
                 {item.text}
-              </Link>
+              </a>
             ))}
           </div>
           <div className="px-6 py-3 w-full flex items-center justify-center gap-8 text-white transition-all duration-150 text-xl">

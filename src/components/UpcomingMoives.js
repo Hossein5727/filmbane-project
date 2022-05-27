@@ -7,7 +7,10 @@ import UpcomingMoiveData from "./UpcomingMovieData";
 
 function UpcomingMoives() {
   return (
-    <div className="w-full h-full flex justify-center items-center flex-col gap-7 px-4 py-16 upcomingMovieContainer">
+    <div
+      id="upcominmovie"
+      className="w-full h-full flex justify-center items-center flex-col gap-7 px-4 py-16 upcomingMovieContainer"
+    >
       <p className="uppercase text-citrine text-[13px] font-[500]">
         Online streaming
       </p>

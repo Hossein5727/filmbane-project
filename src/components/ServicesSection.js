@@ -6,13 +6,17 @@ import ServiceCard from "./ServiceCard";
 
 function ServicesSection() {
   return (
-    <div className="servicesSectionBg w-full h-full px-4 py-16 flex flex-col justify-start items-start gap-6">
-      <div className="w-full relative">
-        <img src={imgService} className="w-full" alt="serviceImg" />
+    <div className="servicesSectionBg w-full h-full px-4 py-16 md:px-14 lg:px-10 flex flex-col justify-start items-start gap-16 lg:flex-row lg:justify-center lg:items-center">
+      <div className="w-full relative md:flex md:items-end">
+        <img
+          src={imgService}
+          className="w-full md:w-[70vw] lg:w-full lg:h-full"
+          alt="serviceImg"
+        />
         <a download href={imgService} className="service-btn">
           download
           <MdLogin className="text-[26px]" />
-        </a> 
+        </a>
       </div>
 
       <div className="flex flex-col justify-start items-start gap-4 w-full">
@@ -32,12 +36,12 @@ function ServicesSection() {
           tempor.There are many variations of passages of lorem Ipsum available,
           but the majority have suffered alteration in some injected humour.
         </p>
-      </div>
 
-      <div className="w-full flex flex-col justify-start items-start gap-6">
-        {serviceCardsData.map((item) => (
-          <ServiceCard item={item} key={item.id} />
-        ))}
+        <div className="w-full flex flex-col justify-start items-start gap-6">
+          {serviceCardsData.map((item) => (
+            <ServiceCard item={item} key={item.id} />
+          ))}
+        </div>
       </div>
     </div>
   );

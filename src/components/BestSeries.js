@@ -4,7 +4,10 @@ import Serial from "./Serial";
 
 function BestSeries() {
   return (
-    <div className="bgBestSeries px-4 py-16 w-full h-full flex justify-center items-center flex-col gap-10">
+    <div
+      id="series"
+      className="bgBestSeries px-4 py-16 w-full h-full flex justify-center items-center flex-col gap-10"
+    >
       <div className="w-full flex items-center flex-col gap-2">
         <p className="text-[12px] font-medium text-citrine uppercase tracking-[1px]">
           best tv series

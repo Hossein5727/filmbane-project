@@ -11,15 +11,15 @@ function Serial({ item }) {
       to={`/movieData/${item.id}`}
     >
       <div className=" min-h-full w-full snap-start flex flex-col justify-between gap-3">
-        <div className="w-[90vw] md:w-auto  flex justify-center items-center h-full rounded-lg overflow-hidden containerImgMovie cursor-pointer">
+        <div className="w-full md:w-auto  flex justify-center items-center h-full rounded-lg overflow-hidden containerImgMovie cursor-pointer">
           <img
             src={item.img}
             alt={item.title}
-            className="w-full h-full object-cover"
+            className="w-full sm:w-[90vw] h-full object-cover"
           />
         </div>
 
-        <div className="w-full h-[66px] flex flex-col justify-between items-start">
+        <div className="w-full h-[66px] sm:px-6 flex flex-col justify-between items-start">
           <div className="flex w-full justify-between items-start">
             <h3 className="text-[16px] font-[700] max-w-[80%] whitespace-pre-wrap text-white transition-all duration-150 hover:text-citrine">
               {item.title}
