@@ -187,3 +187,11 @@
 .bgFooterSection2{
     background: #171D21;
 }
+
+/* / */
+
+.bgMovieData{
+    background: url(./assests/img/footer-bg.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+}

@@ -1,6 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { useNavigate } from "react-router-dom";
+
+const MySwal = withReactContent(Swal);
+
+const initialValues = {
+  name: "",
+  family: "",
+  email: "",
+};
 
 function SignupPage() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scroll({
       top: 0,
@@ -9,7 +24,89 @@ function SignupPage() {
     });
   }, []);
 
-  return <div>SignupPage</div>;
+  const onSubmit = async (values) => {
+    console.log(values);
+    MySwal.fire({
+      icon: "success",
+      title: <p>Sign up was Successfuly</p>,
+    }).then(() => {
+      setTimeout(() => {
+        navigate("/");
+      }, 100);
+    });
+  };
+
+  const validationSchema = () =>
+    Yup.object({
+      name: Yup.string().required("Name is required"),
+      family: Yup.string().required("Family is required"),
+      email: Yup.string().email().required("Email is required"),
+    });
+
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
+    validateOnMount: true,
+  });
+
+  return (
+    <div className="w-[100vw] h-[100vh] flex justify-center items-center bg-slate-700">
+      <form
+        onSubmit={formik.handleSubmit}
+        className="w-auto h-auto bgMovieData px-6 py-4 rounded-lg flex justify-center items-center flex-col gap-6"
+      >
+        <div className="flex flex-col gap-2 items-start justify-start">
+          <input
+            type="text"
+            className="w-[320px] h-[50px] px-4 py-4 text-[16px] text-rich-black-fogra-39 bg-white rounded"
+            placeholder="Enter your name"
+            name="name"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.name && formik.touched.name && (
+            <p className="text-[15px] text-red-500">{formik.errors.name}</p>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-2 items-start justify-start">
+          <input
+            type="text"
+            className="w-[320px] h-[50px] px-4 py-4 text-[16px] text-rich-black-fogra-39 bg-white rounded"
+            placeholder="Enter your family"
+            name="family"
+            onChange={formik.handleChange}
+            value={formik.values.family}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.family && formik.touched.family && (
+            <p className="text-[15px] text-red-500">{formik.errors.family}</p>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-2 items-start justify-start">
+          <input
+            type="text"
+            className="w-[320px] h-[50px] px-4 py-4 text-[16px] text-rich-black-fogra-39 bg-white rounded"
+            placeholder="Enter your email"
+            name="email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.email && formik.touched.email && (
+            <p className="text-[15px] text-red-500">{formik.errors.email}</p>
+          )}
+        </div>
+
+        <button className="w-[150px] h-[48px] font-bold uppercase bg-rich-black-fogra-39 text-citrine  rounded transition-all duration-150 hover:bg-citrine hover:text-rich-black-fogra-39 border-2 border-transparent hover:border-rich-black-fogra-39 focus:bg-citrine focus:text-rich-black-fogra-39 focus:border-rich-black-fogra-39">
+          Sign Up
+        </button>
+      </form>
+    </div>
+  );
 }
 
 export default SignupPage;
