@@ -44,7 +44,8 @@ function Header() {
     window.addEventListener("scroll", () => {
       if (
         headerRef.current.baseURI === "http://localhost:3000/" ||
-        headerRef.current.baseURI.startsWith("http://localhost:3000/#")
+        headerRef.current.baseURI.startsWith("http://localhost:3000/#") ||
+        headerRef.current.baseURI === "https://filmbane-project.vercel.app/"
       ) {
         window.pageYOffset >= 10
           ? headerRef.current.classList.add("bg-[#151923]") ||
