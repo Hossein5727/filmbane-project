@@ -51,7 +51,9 @@ function SignupPage() {
   });
 
   return (
-    <div className="w-[100vw] h-[100vh] flex justify-center items-center bg-slate-700">
+    <div className="w-[100vw] h-[100vh] flex justify-center items-center flex-col gap-6 pt-[80px] bg-slate-700">
+      <h1 className="text-citrine text-4xl font-normal">Please Signup</h1>
+
       <form
         onSubmit={formik.handleSubmit}
         className="w-auto h-auto bgMovieData px-6 py-4 rounded-lg flex justify-center items-center flex-col gap-6"

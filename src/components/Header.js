@@ -132,7 +132,7 @@ function Header() {
           className={`absolute animate__animated animate__delay-1ms  z-[3] right-0  flex top-0 w-[310px] h-[100vh] bg-eerie-black flex-col items-start justify-start gap-8  py-8`}
         >
           <div className="flex justify-between w-full px-6 items-center">
-            <Link to="/">
+            <Link to="/" onClick={() => setIsToggleMenu(false)}>
               <img src={logo} alt="logo" />
             </Link>
             <FaTimes
@@ -145,6 +145,7 @@ function Header() {
               <a
                 key={item.id}
                 href={item.link}
+                onClick={() => setIsToggleMenu(false)}
                 className={`font-[500] border-b px-6 py-[7px] ${
                   item.text === "Home" &&
                   "border-t py-[11px] border-t-[#2F3438]"
@@ -160,6 +161,14 @@ function Header() {
             <BsInstagram className="cursor-pointer transition-all duration-150  hover:text-citrine" />
             <BsYoutube className="cursor-pointer transition-all duration-150  hover:text-citrine" />
           </div>
+
+          <Link
+            to="signup"
+            className="text-center m-auto bg-citrine px-4 py-2 rounded-md cursor-pointer text-rich-black-fogra-39 text-lg "
+            onClick={() => setIsToggleMenu(false)}
+          >
+            Sign up
+          </Link>
         </nav>
       </div>
     </header>
