@@ -61,7 +61,11 @@ function SignupPage() {
         <div className="flex flex-col gap-2 items-start justify-start">
           <input
             type="text"
-            className="w-[320px] h-[50px] px-4 py-4 text-[16px] text-rich-black-fogra-39 bg-white rounded"
+            className={`w-[320px] h-[50px] px-4 py-4 text-[16px] text-rich-black-fogra-39 bg-white rounded outline-none ${
+              formik.errors.name &&
+              formik.touched.name &&
+              "ring-2 ring-red-500 ring-offset-1"
+            }`}
             placeholder="Enter your name"
             name="name"
             onChange={formik.handleChange}
@@ -76,7 +80,11 @@ function SignupPage() {
         <div className="flex flex-col gap-2 items-start justify-start">
           <input
             type="text"
-            className="w-[320px] h-[50px] px-4 py-4 text-[16px] text-rich-black-fogra-39 bg-white rounded"
+            className={`w-[320px] h-[50px] px-4 py-4 text-[16px] text-rich-black-fogra-39 bg-white rounded ${
+              formik.errors.family &&
+              formik.touched.family &&
+              "ring-2 ring-red-500 ring-offset-1"
+            }`}
             placeholder="Enter your family"
             name="family"
             onChange={formik.handleChange}
@@ -91,7 +99,11 @@ function SignupPage() {
         <div className="flex flex-col gap-2 items-start justify-start">
           <input
             type="text"
-            className="w-[320px] h-[50px] px-4 py-4 text-[16px] text-rich-black-fogra-39 bg-white rounded"
+            className={`w-[320px] h-[50px] px-4 py-4 text-[16px] text-rich-black-fogra-39 bg-white rounded ${
+              formik.errors.name &&
+              formik.touched.name &&
+              "ring-2 ring-red-500 ring-offset-1"
+            }`}
             placeholder="Enter your email"
             name="email"
             onChange={formik.handleChange}
