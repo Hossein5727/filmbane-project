@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setUserData } from "../store/informationUser/userSlice";
 
 const MySwal = withReactContent(Swal);
 
@@ -13,7 +15,10 @@ const initialValues = {
   email: "",
 };
 
-function SignupPage() {
+function SignupPage({ setUserItems, userItems }) {
+  const userData = useSelector((state) => state.user.information);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,10 +27,17 @@ function SignupPage() {
       left: 0,
       behavior: "smooth",
     });
+    console.log(userData);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("formData", JSON.stringify(userData));
+  }, [userData]);
 
   const onSubmit = async (values) => {
     console.log(values);
+    dispatch(setUserData(values));
+
     MySwal.fire({
       icon: "success",
       title: <p>Sign up was Successfuly</p>,
@@ -100,8 +112,8 @@ function SignupPage() {
           <input
             type="text"
             className={`w-[320px] h-[50px] px-4 py-4 text-[16px] text-rich-black-fogra-39 bg-white rounded ${
-              formik.errors.name &&
-              formik.touched.name &&
+              formik.errors.email &&
+              formik.touched.email &&
               "ring-2 ring-red-500 ring-offset-1"
             }`}
             placeholder="Enter your email"
@@ -115,7 +127,13 @@ function SignupPage() {
           )}
         </div>
 
-        <button className="w-[150px] h-[48px] font-bold uppercase bg-rich-black-fogra-39 text-citrine  rounded transition-all duration-150 hover:bg-citrine hover:text-rich-black-fogra-39 border-2 border-transparent hover:border-rich-black-fogra-39 focus:bg-citrine focus:text-rich-black-fogra-39 focus:border-rich-black-fogra-39">
+        <button
+          disabled={!formik.isValid}
+          className={`w-[150px] h-[48px] font-bold uppercase bg-rich-black-fogra-39 text-citrine  rounded transition-all duration-150 hover:bg-citrine hover:text-rich-black-fogra-39 border-2 border-transparent hover:border-rich-black-fogra-39 focus:bg-citrine focus:text-rich-black-fogra-39 focus:border-rich-black-fogra-39 ${
+            !formik.isValid &&
+            "opacity-50 hover:bg-rich-black-fogra-39 hover:text-citrine cursor-not-allowed"
+          }`}
+        >
           Sign Up
         </button>
       </form>

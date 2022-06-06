@@ -1,21 +1,36 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HiMenuAlt4 } from "react-icons/hi";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaUserCircle } from "react-icons/fa";
 import { BsYoutube, BsInstagram, BsTwitter, BsFacebook } from "react-icons/bs";
-import { BiSearch, BiWorld } from "react-icons/bi";
+import { BiSearch, BiWorld, BiLogInCircle } from "react-icons/bi";
 import { navData } from "../data/navData";
 import logo from "../assests/img/logo.svg";
+import UserMenu from "./UserMenu";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserData } from "../store/informationUser/userSlice";
 
-function Header() {
+function Header({ userItems, setUserItems }) {
   const [isToggleMenu, setIsToggleMenu] = useState(false);
+  const [isOpenUserMenu, setIsOpenUserMenu] = useState(false);
   const navRef = useRef();
   const navContainerRef = useRef();
   const headerRef = useRef();
   const location = useLocation();
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.user.information);
 
   useEffect(() => {
-    console.log(headerRef);
+    const items = JSON.parse(localStorage.getItem("formData"));
+    if (items) {
+      setUserItems(items);
+      dispatch(setUserData(items));
+    }
+  }, [location]);
+
+  useEffect(() => {}, [userItems]);
+
+  useEffect(() => {
     // toggle navbar and has transition!!
     if (isToggleMenu) {
       navRef.current.classList.add("animate__fadeInRight", "right-0");
@@ -57,6 +72,13 @@ function Header() {
             headerRef.current.classList.remove("bg-[#151923]");
       }
     });
+  };
+
+  const handleDeleteLocal = () => {
+    setIsOpenUserMenu(false);
+    localStorage.clear();
+    setUserItems([]);
+    dispatch(setUserData());
   };
 
   return (
@@ -121,6 +143,20 @@ function Header() {
           >
             sign in
           </Link>
+          {userItems && userItems.name ? (
+            <FaUserCircle
+              onClick={() => setIsOpenUserMenu(!isOpenUserMenu)}
+              className="text-3xl cursor-pointer transition-all duration-150 text-white lg:hidden"
+            />
+          ) : (
+            <Link
+              to="signup"
+              className=" cursor-pointer text-white text-4xl lg:hidden"
+              onClick={() => setIsToggleMenu(false)}
+            >
+              <BiLogInCircle />
+            </Link>
+          )}
           <HiMenuAlt4
             className="text-4xl cursor-pointer transition-all duration-150 text-white lg:hidden"
             onClick={() => setIsToggleMenu(!isToggleMenu)}
@@ -165,18 +201,16 @@ function Header() {
             <BsInstagram className="cursor-pointer transition-all duration-150  hover:text-citrine" />
             <BsYoutube className="cursor-pointer transition-all duration-150  hover:text-citrine" />
           </div>
-
-          <Link
-            to="signup"
-            className="text-center m-auto bg-citrine px-4 py-2 rounded-md cursor-pointer text-rich-black-fogra-39 text-lg "
-            onClick={() => setIsToggleMenu(false)}
-          >
-            Sign up
-          </Link>
         </nav>
       </div>
+      {isOpenUserMenu && (
+        <UserMenu
+          isOpenUserMenu={isOpenUserMenu}
+          setIsOpenUserMenu={setIsOpenUserMenu}
+          logOut={handleDeleteLocal}
+        />
+      )}
     </header>
   );
 }
-
 export default Header;

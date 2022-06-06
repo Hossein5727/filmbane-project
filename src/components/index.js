@@ -9,3 +9,4 @@ export { default as BestSeries } from "./BestSeries";
 export { default as Serial } from "./Serial";
 export { default as Cta } from "./Cta";
 export { default as Footer } from "./Footer";
+export { default as UserMenu } from "./UserMenu";

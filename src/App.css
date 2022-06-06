@@ -4,6 +4,11 @@
     padding: 6px 12px;
 }
 
+:root {
+    --animate-duration: 600ms !important;
+    --animate-delay: 0.6s !important;
+  }
+
 /* / */
 
 
@@ -22,6 +27,7 @@
     padding-left: 18px;
     padding-right: 18px;
     /* background-color: #151923; */
+    /* color: #000000; */
 }
 
 .upcomingMovieContainer{
@@ -194,4 +200,13 @@
     background: url(./assests/img/footer-bg.jpg) no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+/* / */
+
+.bgUserMenu{
+    background-color: #00000085;
+    transition: all 0.3s;
+    position: fixed;
+
 }
