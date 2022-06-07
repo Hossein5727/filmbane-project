@@ -1,16 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./layout/Layout";
-import { HomePage, MovieData, SignupPage } from "./pages";
+import { EditUserPage, HomePage, MovieData, SignupPage } from "./pages";
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "animate.css";
 
 function App() {
   const [userItems, setUserItems] = useState([]);
-
-  useEffect(() => {
-    localStorage.getItem("formData",);
-  }, []);
 
   return (
     <div className="w-full">
@@ -23,6 +19,7 @@ function App() {
               <SignupPage setUserItems={setUserItems} userItems={userItems} />
             }
           />
+          <Route path="/edituser" element={<EditUserPage />} />
           <Route path="/" element={<HomePage />} />
         </Routes>
       </Layout>
