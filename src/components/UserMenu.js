@@ -50,7 +50,7 @@ function UserMenu({ setIsOpenUserMenu, logOut }) {
         </div>
 
         <div
-          className="flex items-center gap-2 text-rich-black-fogra-39"
+          className="flex items-center gap-2 text-rich-black-fogra-39 cursor-pointer"
           onClick={logOut}
         >
           <IoMdLogOut className="text-2xl" />

@@ -136,13 +136,20 @@ function Header({ userItems, setUserItems }) {
               </select>
             </div>
           </div>
-          <Link
-            to="/signup"
-            className="hidden xl:uppercase xl:flex xl:justify-center xl:items-center xl:w-32 xl:h-11 xl:bg-rich-black-fogra-29 border-2 border-citrine xl:rounded-3xl xl:text-white xl:font-bold xl:text-sm xl:tracking-wider xl:transition-all xl:duration-150 xl:hover:bg-citrine xl:hover:text-rich-black-fogra-39 xl:focus:bg-citrine xl:focus:text-rich-black-fogra-39  "
-            style={{ wordSpacing: "3px" }}
-          >
-            sign in
-          </Link>
+          {userItems && userItems.name ? (
+            <FaUserCircle
+              onClick={() => setIsOpenUserMenu(!isOpenUserMenu)}
+              className="hidden xl:text-3xl xl:cursor-pointer xl:transition-all xl:duration-150 xl:text-citrine xl:block"
+            />
+          ) : (
+            <Link
+              to="/signup"
+              className="hidden xl:uppercase xl:flex xl:justify-center xl:items-center xl:w-32 xl:h-11 xl:bg-rich-black-fogra-29 border-2 border-citrine xl:rounded-3xl xl:text-white xl:font-bold xl:text-sm xl:tracking-wider xl:transition-all xl:duration-150 xl:hover:bg-citrine xl:hover:text-rich-black-fogra-39 xl:focus:bg-citrine xl:focus:text-rich-black-fogra-39  "
+              style={{ wordSpacing: "3px" }}
+            >
+              sign in
+            </Link>
+          )}
           {userItems && userItems.name ? (
             <FaUserCircle
               onClick={() => setIsOpenUserMenu(!isOpenUserMenu)}

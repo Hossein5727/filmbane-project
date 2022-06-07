@@ -34,7 +34,6 @@ function EditUserPage() {
 
   useEffect(() => {
     setFormValue(userData);
-    console.log(userData);
   }, [userData, formValue]);
 
   useEffect(() => {
