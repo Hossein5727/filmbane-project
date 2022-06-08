@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserCircle, FaUserEdit } from "react-icons/fa";
+import { FaUserCircle, FaUserEdit, FaStar } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 function UserMenu({ setIsOpenUserMenu, logOut }) {
+  const [currentValue, setCurrentValue] = useState(Math.floor(5));
   const userRef = useRef();
   const userData = useSelector((state) => state.user.information);
 
@@ -21,6 +22,10 @@ function UserMenu({ setIsOpenUserMenu, logOut }) {
   }, []);
 
   console.log(userData);
+
+  const handleClickStar = (value) => {
+    setCurrentValue(value);
+  };
 
   return (
     <div className="w-[100vw] h-[100vh] bgUserMenu flex justify-start items-start px-6 py-28 z-[5] inset-0">
@@ -55,6 +60,17 @@ function UserMenu({ setIsOpenUserMenu, logOut }) {
         >
           <IoMdLogOut className="text-2xl" />
           <p className="text-xl">Log out</p>
+        </div>
+        <div className="flex flex-row gap-[5px]">
+          {Array.apply(null, { length: 5 }).map((e, i) => (
+            <FaStar
+              key={i}
+              onClick={() => handleClickStar(i + 1)}
+              className={`cursor-pointer text-lg ${
+                currentValue > i ? "text-orange-500" : "text-gray-600"
+              } `}
+            />
+          ))}
         </div>
       </div>
     </div>
