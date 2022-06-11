@@ -4,8 +4,7 @@ import { FaUserCircle, FaUserEdit, FaStar } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-function UserMenu({ setIsOpenUserMenu, logOut }) {
-  const [currentValue, setCurrentValue] = useState(Math.floor(5));
+function UserMenu({ setIsOpenUserMenu, logOut,currentValue,setCurrentValue }) {
   const userRef = useRef();
   const userData = useSelector((state) => state.user.information);
 
@@ -66,8 +65,10 @@ function UserMenu({ setIsOpenUserMenu, logOut }) {
             <FaStar
               key={i}
               onClick={() => handleClickStar(i + 1)}
-              className={`cursor-pointer text-lg ${
-                currentValue > i ? "text-orange-500" : "text-gray-600"
+              className={`cursor-pointer text-lg transition-all duration-200 ${
+                currentValue > i
+                  ? "text-orange-500 opacity-100"
+                  : "text-gray-600 opacity-30"
               } `}
             />
           ))}

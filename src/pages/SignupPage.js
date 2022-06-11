@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { FaStar } from "react-icons/fa";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useNavigate } from "react-router-dom";
@@ -63,7 +64,7 @@ function SignupPage({ setUserItems, userItems }) {
   });
 
   return (
-    <div className="w-[100vw] h-[100vh] flex justify-center items-center flex-col gap-6 pt-[80px] bg-slate-700">
+    <div className="w-[100vw] h-[100vh] flex justify-center items-center flex-col gap-6  bg-slate-700">
       <h1 className="text-citrine text-4xl font-normal">Please Signup</h1>
 
       <form

@@ -8,7 +8,7 @@ function Serial({ item }) {
     <Link
       className="w-full mb-6 md:w-[300px]"
       key={item.id}
-      to={`/movieData/${item.id}`}
+      to={`/moviedata/${item.id}`}
     >
       <div className=" min-h-full w-full snap-start flex flex-col justify-between gap-3">
         <div className="w-full md:w-auto  flex justify-center items-center h-full rounded-lg overflow-hidden containerImgMovie cursor-pointer">

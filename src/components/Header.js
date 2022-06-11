@@ -13,6 +13,7 @@ import { setUserData } from "../store/informationUser/userSlice";
 function Header({ userItems, setUserItems }) {
   const [isToggleMenu, setIsToggleMenu] = useState(false);
   const [isOpenUserMenu, setIsOpenUserMenu] = useState(false);
+  const [currentValue, setCurrentValue] = useState(Math.floor(3));
   const navRef = useRef();
   const navContainerRef = useRef();
   const headerRef = useRef();
@@ -53,13 +54,16 @@ function Header({ userItems, setUserItems }) {
     return () => {
       clearTimeout(navContainerRef);
     };
-  }, [navRef, isToggleMenu, location]);
+  }, [navRef, isToggleMenu, location, headerRef]);
 
   const headerScrollChangeBg = () => {
     window.addEventListener("scroll", () => {
       if (
         headerRef.current.baseURI === "http://localhost:3000/" ||
         headerRef.current.baseURI.startsWith("http://localhost:3000/#") ||
+        headerRef.current.baseURI.startsWith(
+          "http://localhost:3000/moviedata/"
+        ) ||
         headerRef.current.baseURI === "https://filmbane-project.vercel.app/" ||
         headerRef.current.baseURI.startsWith(
           "https://filmbane-project.vercel.app/#"
@@ -85,7 +89,9 @@ function Header({ userItems, setUserItems }) {
     <header
       ref={headerRef}
       className={`w-full fixed top-0 left-0  ${
-        location.pathname === "/" ? "bg-transparent" : "bg-[#151923]"
+        location.pathname === "/" || location.pathname.startsWith("/moviedata/")
+          ? "bg-transparent"
+          : "bg-[#151923] relative"
       }   px-4 lg:px-8 py-5 lg:py-9 z-[8] transition-all duration-500`}
     >
       <div className="w-full flex items-center justify-between">
@@ -215,6 +221,8 @@ function Header({ userItems, setUserItems }) {
           isOpenUserMenu={isOpenUserMenu}
           setIsOpenUserMenu={setIsOpenUserMenu}
           logOut={handleDeleteLocal}
+          currentValue={currentValue}
+          setCurrentValue={setCurrentValue}
         />
       )}
     </header>

@@ -210,3 +210,10 @@
     position: fixed;
 
 }
+/* / */
+
+.moviePageBackground{
+    background: url(./assests/img/movie-detail-bg.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
