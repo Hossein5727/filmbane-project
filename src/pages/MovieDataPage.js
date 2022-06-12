@@ -21,9 +21,9 @@ function MovieData() {
   }, []);
 
   return (
-    <>
-      <div className="w-full h-full moviePageBackground flex justify-center items-center flex-col gap-7 px-5 py-32">
-        <figure className="max-w-[300px] relative rounded-lg z-[2] overflow-hidden">
+    <div className="w-full flex flex-col">
+      <div className="w-full h-full moviePageBackground flex justify-center items-center flex-col gap-7 px-5 py-32 lg:flex-row lg:justify-start lg:px-12">
+        <figure className="max-w-[300px] relative rounded-lg overflow-hidden">
           <img
             src={bannerMovie}
             className="w-full h-full object-cover "
@@ -35,12 +35,14 @@ function MovieData() {
           </button>
         </figure>
 
-        <div className="w-full flex flex-col justify-center items-start gap-5 mt-6">
-          <p className="text-citrine text-xl font-bold">New Episode</p>
-          <h2 className="text-white text-[36px] font-bold">
+        <div className="w-full flex flex-col justify-center items-start gap-5 lg:w-[650px]">
+          <p className="text-citrine text-xl font-bold lg:text-2xl">
+            New Episode
+          </p>
+          <h2 className="text-white text-[36px] font-bold lg:text-[60px]">
             Free <span className="text-citrine">Guy</span>
           </h2>
-          <div className="flex flex-col gap-4">
+          <div className="w-full flex flex-col gap-4 lg:flex-row lg:justify-start ">
             <div className="flex items-center gap-2">
               <div className="w-[40px] h-[25px] flex justify-center items-center border-2 border-white text-[11px] font-[700] text-rich-black-fogra-39 bg-white">
                 PG 13
@@ -49,7 +51,7 @@ function MovieData() {
                 HD
               </div>
             </div>
-            <div className="flex items-center gap-2 text-sm w-full">
+            <div className="flex items-center gap-2 text-sm ">
               {genresMoiveData.map((item) => (
                 <p
                   key={item.id}
@@ -80,7 +82,7 @@ function MovieData() {
             </p>
           </div>
 
-          <div className="w-full flex flex-col justify-center items-center gap-4 bg-gunmetal-1 text-white rounded px-4 py-4">
+          <div className="w-full flex flex-col justify-center items-center gap-4 bg-gunmetal-1 text-white rounded px-4 py-4 lg:w-[450px] lg:flex-row lg:py-6">
             <div className="w-full flex justify-center items-start gap-5 text-white">
               <div className="text-xl flex flex-col gap-1 justify-center items-center">
                 <BsShareFill />
@@ -92,21 +94,21 @@ function MovieData() {
                 <p className="text-xs">Streaming Channels</p>
               </div>
             </div>
-            <button className="text-[10px] font-[700] leading-[2px] bg-gunmetal-1 text-white uppercase cursor-pointer h-[44px] w-[150px] border-2 border-citrine rounded-full px-[12px] py-[14px] flex items-center justify-center gap-1 transition-all duration-200 hover:bg-citrine hover:text-rich-black-fogra-39 focus:bg-citrine focus:text-rich-black-fogra-39">
+            <button className="text-[10px] font-[700] leading-[2px] bg-gunmetal-1 text-white uppercase cursor-pointer h-[44px] w-[150px] border-2 border-citrine rounded-full px-[12px] py-[14px]  lg:w-[200px] flex items-center justify-center gap-1 transition-all duration-200 hover:bg-citrine hover:text-rich-black-fogra-39 focus:bg-citrine focus:text-rich-black-fogra-39">
               <BsFillPlayFill className="text-[20px]" />
               watch now
             </button>
           </div>
         </div>
 
-        <div className="w-full justify-start flex">
-          <button className="uppercase tracking-[5px] text-xs bg-citrine flex items-center gap-2 px-5 py-4 rounded-md ">
-            Download <AiOutlineDownload className="text-2xl " />
+        <div className="w-full justify-start flex md:w-auto lg:absolute lg:right-4 lg:bottom-[180px] ">
+          <button className="uppercase tracking-[5px] text-xs bg-citrine flex items-center gap-2 px-5 py-4 rounded-md lg:rotate-90 lg:px-10 lg:py-10">
+            Download <AiOutlineDownload className="text-2xl lg:-rotate-90" />
           </button>
         </div>
       </div>
       <BestSeries />
-    </>
+    </div>
   );
 }
 
